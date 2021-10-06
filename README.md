@@ -3,6 +3,8 @@ In this repo, I will try to develop a complete pipeline for data science project
 
 ```
 git clone https://github.com/arm-on/dstools/
+import dstools.dstools as dstools # use this line 
+from dstools.dstools import * # or this line to import the code
 ```
 
 # Ongoing:
