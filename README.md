@@ -2,7 +2,7 @@
 In this repo, I will try to develop a complete pipeline for data science projects. You can use my code freely via running the code below:
 
 ```
-git clone https://github.com/arm-on/dstools/
+!rm -rf dstools && git clone https://github.com/arm-on/dstools/ && mv dstools/dstools.py dstools.py
 import dstools.dstools as dstools # use this line 
 from dstools.dstools import * # or this line to import the code
 ```
