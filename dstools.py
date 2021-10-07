@@ -3,6 +3,9 @@ import pandas as pd
 
 
 def load_file(path, format='unknown'):
+    '''
+    Load a file into a variable
+    '''
     def load_json():
         with open(path, 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -26,6 +29,9 @@ def load_file(path, format='unknown'):
         raise ValueError('format not supported')
 
 def write_file(var, path, format='unknown'):
+    '''
+    Write a variable into a file
+    '''
     def write_json():
         with open(path, 'w', encoding='utf-8') as file:
             json.dump(var, file)
@@ -46,6 +52,9 @@ def write_file(var, path, format='unknown'):
         raise ValueError('format not supported')
 
 def gpu_tpu():
+    '''
+    Get the information about GPU or TPU's available
+    '''
     try:
         import pynvml
         pynvml.nvmlInit()
