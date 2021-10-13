@@ -100,23 +100,6 @@ def colab_prevent_disconnection():
     print("Done.")
 
 
-def kaggle_prevent_disconnection():
-    '''
-    Prevents Colab Session from Being Closed
-    '''
-    import IPython
-
-    display(IPython.display.Javascript('''
-    function ClickConnect(){
-    btn = document.querySelectorAll('button[class*="EditorTimeOutModal_StyledButton"]')[1]
-    if (btn != null){
-        if (btn.textContent == 'Continue editing'){
-            btn.click()
-        }
-    }
-    
-    setInterval(ClickConnect,60000)
-    }
-    '''))
-
-    print("Done.")
+def kaggle_link(file_path):
+    from IPython.display import FileLink
+    return FileLink(file_path)
