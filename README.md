@@ -10,4 +10,4 @@ from dstools.main import *
 - Loading different formats (CSV, JSON, TXT) :white_check_mark:
 - Writing variables to different file formats (CSV, JSON, TXT) :white_check_mark:
 - Splitting the data into train, test, and development sets
-- Moving files from Kaggle to Google Drive, from Google Drive to Dropbox, etc. [Server to Drive](https://github.com/arm-on/dstools/upload-to-drive.md)
+- Moving files from Kaggle to Google Drive, from Google Drive to Dropbox, etc. [Server to Drive](https://github.com/arm-on/dstools/blob/main/upload-to-drive.md)
