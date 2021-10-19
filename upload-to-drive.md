@@ -2,7 +2,9 @@
 
 # How to Move Files from a Server to Google Drive
 
-## Step 1: Google Cloud Platform (Console)
+
+- Install Amazon AWS on the server using [this tutorial](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html), and configure it using `aws configure`.
+
 - Visit [this page](https://console.developers.google.com/apis/library/drive.googleapis.com/)
 
 - Click "Enable". After some time (about a minute or so), you will be redirected to a page titled "Google Cloud Platform" at this [url](https://console.cloud.google.com/apis/api/drive.googleapis.com/overview?project=rapid-stage-329510).
