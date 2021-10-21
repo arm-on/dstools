@@ -1,12 +1,6 @@
 import json
 import pandas as pd
-from sklearn.model_selection import train_test_split
-import pynvml
-import os
-from tensorflow.python.profiler import profiler_client
-import IPython
-from google.colab import output
-from IPython.display import FileLink
+
 
 def load_file(path, format='unknown'):
     '''
@@ -62,12 +56,16 @@ def gpu_tpu():
     Get the information about GPU or TPU's available
     '''
     try:
+        import pynvml
         pynvml.nvmlInit()
         handle = pynvml.nvmlDeviceGetHandleByIndex(0)
         device_name = pynvml.nvmlDeviceGetName(handle)
         return device_name
     except:
         try:
+            import os
+            from tensorflow.python.profiler import profiler_client
+
             tpu_profile_service_address = os.environ['COLAB_TPU_ADDR'].replace('8470', '8466')
             return profiler_client.monitor(tpu_profile_service_address, 100, 2)
         except:
@@ -78,6 +76,8 @@ def colab_prevent_disconnection():
     '''
     Prevents Colab Session from Being Closed
     '''
+    import IPython
+    from google.colab import output
 
     display(IPython.display.Javascript('''
     function ClickConnect(){
@@ -104,6 +104,7 @@ def kaggle_link(file_path):
     '''
     Given a file path, outputs the direct link to that file over the internet
     '''
+    from IPython.display import FileLink
     return FileLink(file_path)
 
 def train_test_dev_split(items, train, test, do_shuffle=True):
@@ -111,6 +112,7 @@ def train_test_dev_split(items, train, test, do_shuffle=True):
     Split the data into training, testing, and development sets
     '''
     dev = 100-(train+test)
+    from sklearn.model_selection import train_test_split
     train_items, temp_items = train_test_split(items, test_size=(test+dev)/100, random_state=42)
     test_items, dev_items = train_test_split(items, test_size=dev/(dev+test), random_state=42)
     return train_items, test_items, dev_items
