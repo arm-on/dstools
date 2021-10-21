@@ -114,7 +114,7 @@ def train_test_dev_split(items, train, test, do_shuffle=True):
     if do_shuffle == True:
         if isinstance(items, pd.DataFrame):
             from sklearn.utils import shuffle
-            items = shuffle(items)
+            items = items.sample(frac = 1)
         else:
         from random import shuffle
         shuffle(items)
