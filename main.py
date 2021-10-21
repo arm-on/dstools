@@ -101,5 +101,23 @@ def colab_prevent_disconnection():
 
 
 def kaggle_link(file_path):
+    '''
+    Given a file path, outputs the direct link to that file over the internet
+    '''
     from IPython.display import FileLink
     return FileLink(file_path)
+
+def train_test_dev_split(items, train, test, do_shuffle=True):
+    '''
+    Split the data into training, testing, and development sets
+    '''
+    if do_shuffle == True:
+        from random import shuffle
+        shuffle(items)
+    all_len = len(items)
+    tr_len = int(all_len*train)
+    te_len = int(all_len*test)
+    train_items = items[:tr_len]
+    test_items = items[tr_len:tr_len+te_len]
+    dev_items = items[tr_len+te_len:]
+    return train_items, test_items, dev_items
