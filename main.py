@@ -111,16 +111,10 @@ def train_test_dev_split(items, train, test, do_shuffle=True):
     '''
     Split the data into training, testing, and development sets
     '''
-    if do_shuffle == True:
-        if isinstance(items, pd.DataFrame):
-            items = items.sample(frac = 1)
-        else:
-        from random import shuffle
-        shuffle(items)
-    all_len = len(items)
-    tr_len = int(all_len*train)
-    te_len = int(all_len*test)
-    train_items = items[:tr_len]
-    test_items = items[tr_len:tr_len+te_len]
-    dev_items = items[tr_len+te_len:]
+    dev = 100-(train+test)
+    from sklearn.cross_validation import train_test_split
+    train_items, temp_items = train_test_split(
+...     items, test_size=(test+dev)/100, random_state=42)
+    test_items, dev_items = train_test_split(
+...     items, test_size=dev/(dev+test), random_state=42)
     return train_items, test_items, dev_items
