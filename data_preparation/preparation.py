@@ -2,7 +2,7 @@ def train_test_dev_split(items, train, test, dev):
     from random import shuffle
     import pandas as pd
     if isinstance(items, pd.DataFrame):
-        items.sample(frac=1)
+        items = items.sample(frac=1)
     else:
         shuffle(items)
     assert train+test+dev==100, "partitions should sum to 100"
