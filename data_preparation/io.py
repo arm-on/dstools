@@ -9,19 +9,7 @@ def load_file(path, format='unknown'):
             data = json.load(file)
         return data
     def load_csv(header=0, delimiter=','):
-        with open(path) as f:
-            first_line = f.readline()
-        items = first_line.split(delimiter)
-        flag = 0
-        for item in items:
-            for ch in item:
-                if ch.isnumeric():
-                    flag = 1
-        if flag == 1:
-            data = pd.read_csv(path)
-        else:
-            data = pd.read_csv(path, delimiter=delimiter, header=header)
-        return data
+        return pd.read_csv(path)
     def load_txt_line_by_line():
         with open(path, 'r', encoding='utf-8') as file:
             data = file.readlines()
