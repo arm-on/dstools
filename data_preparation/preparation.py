@@ -13,4 +13,3 @@ def train_test_dev_split(items, train, test, dev):
     test_items = items[num_train:num_train+num_test]
     dev_items = items[num_train+num_test:]
     return train_items, test_items, dev_items
-
