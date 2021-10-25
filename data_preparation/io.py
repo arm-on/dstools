@@ -8,7 +8,18 @@ def load_file(path, format='unknown'):
         with open(path, 'r', encoding='utf-8') as file:
             data = json.load(file)
         return data
-    def load_csv(header=0, delimiter=','):
+    def load_csv():
+        with open(path) as f:
+            first_line = f.readline()
+        columns = first_line.split(',')
+        columns = [c.replace('.','') for c in columns]
+        no_header = False
+        for c in columns:
+            if c.isnumeric():
+                no_header = True
+                break
+        if no_header == True:
+            return pd.read_csv(path, header=None)
         return pd.read_csv(path)
     def load_txt_line_by_line():
         with open(path, 'r', encoding='utf-8') as file:
@@ -17,11 +28,11 @@ def load_file(path, format='unknown'):
         return data
     format = path.split('.')[-1] if format=='unknown' else format
     if format == 'csv':
-        return load_csv(path)
+        return load_csv()
     elif format == 'json':
-        return load_json(path)
+        return load_json()
     elif format == 'txt':
-        return load_txt_line_by_line(path)
+        return load_txt_line_by_line()
     else:
         raise ValueError('format not supported')
 
